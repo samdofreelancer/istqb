@@ -1,0 +1,69 @@
+{
+  "title": "ISTQB Foundation Level Quiz",
+  "description": "Test your knowledge of ISTQB Foundation Level concepts",
+  "questions": [
+    {
+      "text": "What is the main purpose of testing?",
+      "choices": [
+        {
+          "text": "To find defects and reduce the level of risk of poor software quality",
+          "correct": true
+        },
+        {
+          "text": "To make software that works perfectly",
+          "correct": false
+        },
+        {
+          "text": "To prove that all defects have been fixed",
+          "correct": false
+        },
+        {
+          "text": "To ensure that the software is 100% bug-free",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "text": "Which of the following is a test level?",
+      "choices": [
+        {
+          "text": "Integration testing",
+          "correct": true
+        },
+        {
+          "text": "White box testing",
+          "correct": false
+        },
+        {
+          "text": "Exploratory testing",
+          "correct": false
+        },
+        {
+          "text": "Regression testing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "text": "What is the difference between verification and validation?",
+      "choices": [
+        {
+          "text": "Verification: Are we building the product right? Validation: Are we building the right product?",
+          "correct": true
+        },
+        {
+          "text": "They are the same thing",
+          "correct": false
+        },
+        {
+          "text": "Verification is done by developers, validation by testers",
+          "correct": false
+        },
+        {
+          "text": "Verification is manual testing, validation is automated testing",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

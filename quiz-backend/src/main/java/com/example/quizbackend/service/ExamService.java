@@ -14,17 +14,15 @@ public class ExamService {
 
     @Transactional
     public Exam importExam(Exam exam) {
-        exam.getQuestions().forEach(question -> {
-            question.setExam(exam);
-            question.getChoices().forEach(choice -> choice.setQuestion(question));
-        });
         return examRepository.save(exam);
     }
 
+    @Transactional(readOnly = true)
     public List<Exam> getAllExams() {
         return examRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Exam getExamById(Long id) {
         return examRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Exam not found"));

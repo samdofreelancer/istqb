@@ -4,25 +4,25 @@
     <p>{{ exam.description }}</p>
     <div v-for="(question, index) in exam.questions" :key="question.id" class="question">
       <h3>Question {{ index + 1 }}</h3>
-      <p>{{ question.content }}</p>
+      <p>{{ question.text }}</p>
       <div class="choices">
         <template v-if="question.multiple">
-          <div v-for="choice in question.choices" :key="choice.id">
+          <div v-for="choice in question.choices" :key="choice.id" class="choice-item">
             <input type="checkbox" 
                    :id="'choice-' + choice.id"
                    v-model="answers[question.id]"
                    :value="choice.id">
-            <label :for="'choice-' + choice.id">{{ choice.content }}</label>
+            <label :for="'choice-' + choice.id">{{ choice.text }}</label>
           </div>
         </template>
         <template v-else>
-          <div v-for="choice in question.choices" :key="choice.id">
+          <div v-for="choice in question.choices" :key="choice.id" class="choice-item">
             <input type="radio" 
                    :id="'choice-' + choice.id"
                    v-model="answers[question.id]"
                    :value="choice.id"
                    :name="'question-' + question.id">
-            <label :for="'choice-' + choice.id">{{ choice.content }}</label>
+            <label :for="'choice-' + choice.id">{{ choice.text }}</label>
           </div>
         </template>
       </div>
@@ -89,23 +89,82 @@ export default {
 <style scoped>
 .take-exam {
   padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
 .question {
-  margin: 20px 0;
-  padding: 15px;
+  margin: 30px 0;
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
 .choices {
-  margin: 10px 0;
+  margin: 15px 0;
 }
+
+.choice-item {
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.choice-item:hover {
+  background-color: #f5f5f5;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
 .submit-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
+  display: block;
+  margin: 30px auto;
+  padding: 12px 30px;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 </style>

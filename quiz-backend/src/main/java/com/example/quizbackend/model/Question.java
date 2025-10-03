@@ -1,25 +1,39 @@
 package com.example.quizbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Data;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import java.util.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String content;
+    @Column(name = "text")
+    private String text;
+    
     private boolean multiple;
     
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Exam exam;
     
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Choice> choices = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    @JsonManagedReference
+    private Set<Choice> choices = new LinkedHashSet<>();
+    
+    public void setChoices(List<Choice> choices) {
+        this.choices.clear();
+        if (choices != null) {
+            choices.forEach(choice -> choice.setQuestion(this));
+            this.choices.addAll(choices);
+        }
+    }
 }
