@@ -77,6 +77,31 @@
             </div>
           </div>
         </div>
+        
+        <div class="explanation-section" v-if="showExplanationForQuestion(question)">
+          <div class="explanation-header">
+            <span class="material-icons">lightbulb</span>
+            <span>Explanation</span>
+          </div>
+          <div class="explanation-content">
+            <div v-if="getQuestionStatus(question) === 'incorrect'" class="wrong-answer-explanation">
+              <p><strong>Why your answer is incorrect:</strong></p>
+              <p>{{ getIncorrectExplanation(question) }}</p>
+            </div>
+            <div class="correct-explanation">
+              <p><strong>Correct Answer Explanation:</strong></p>
+              <p>{{ getCorrectExplanation(question) }}</p>
+            </div>
+            <div class="key-points" v-if="question.keyPoints && question.keyPoints.length">
+              <p><strong>Key Points:</strong></p>
+              <ul>
+                <li v-for="(point, index) in question.keyPoints" :key="index">
+                  {{ point }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -145,6 +170,31 @@ export default {
       )
     }
 
+    const showExplanationForQuestion = (question) => {
+      return getQuestionStatus(question) !== 'unanswered'
+    }
+
+    const getIncorrectExplanation = (question) => {
+      const userAnswer = examStore.userAnswers.find(a => a.questionId === question.id)
+      const selectedChoice = question.choices.find(c => c.id === userAnswer?.choiceId)
+      
+      if (!selectedChoice) return ''
+      
+      return selectedChoice.explanation || 
+        `The answer "${selectedChoice.text}" is incorrect because it misses key aspects of software testing. ` +
+        `Testing is not just about finding bugs, but about ensuring software quality and reducing risks.`
+    }
+
+    const getCorrectExplanation = (question) => {
+      const correctChoice = question.choices.find(c => c.correct)
+      
+      if (!correctChoice) return ''
+      
+      return correctChoice.explanation || 
+        `"${correctChoice.text}" is correct because it aligns with the fundamental principles of software testing. ` +
+        `This answer captures the essential purpose of testing in software development.`
+    }
+
     const retryExam = () => {
       const currentExamId = examStore.currentExam?.id
       if (currentExamId) {
@@ -159,6 +209,9 @@ export default {
       getQuestionStatus,
       getQuestionIcon,
       getQuestionStatusText,
+      showExplanationForQuestion,
+      getIncorrectExplanation,
+      getCorrectExplanation,
       retryExam
     }
   },
@@ -447,6 +500,70 @@ export default {
 .your-answer {
   background: #ffebee;
   color: #c62828;
+}
+
+.explanation-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.explanation-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #495057;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.explanation-header .material-icons {
+  color: #ffd700;
+}
+
+.explanation-content {
+  color: #495057;
+  line-height: 1.6;
+}
+
+.wrong-answer-explanation {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 235, 238, 0.5);
+  border-radius: 6px;
+}
+
+.correct-explanation {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(232, 245, 233, 0.5);
+  border-radius: 6px;
+}
+
+.key-points {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(236, 239, 241, 0.5);
+  border-radius: 6px;
+}
+
+.key-points ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.key-points li {
+  margin-bottom: 0.5rem;
+}
+
+.key-points li:last-child {
+  margin-bottom: 0;
+}
+
+.explanation-content strong {
+  color: #2c3e50;
 }
 
 .action-buttons {

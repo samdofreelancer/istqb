@@ -7,20 +7,30 @@
       "choices": [
         {
           "text": "To find defects and reduce the level of risk of poor software quality",
-          "correct": true
+          "correct": true,
+          "explanation": "This is the correct answer because testing's primary purpose is to identify defects early and minimize risks. Testing helps ensure software quality by finding issues before they reach production, thus reducing the risk of software failures."
         },
         {
           "text": "To make software that works perfectly",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect because achieving 'perfect' software is practically impossible. Testing helps improve software quality but cannot guarantee perfection."
         },
         {
           "text": "To prove that all defects have been fixed",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect because testing cannot prove the absence of defects. It can only show their presence and help reduce their occurrence."
         },
         {
           "text": "To ensure that the software is 100% bug-free",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect because achieving 100% bug-free software is impossible. Testing helps identify and fix bugs but cannot guarantee their complete absence."
         }
+      ],
+      "keyPoints": [
+        "Testing is about finding defects and reducing risks",
+        "Perfect or bug-free software is an unrealistic goal",
+        "Testing shows the presence of defects, not their absence",
+        "Risk reduction is a key aspect of testing"
       ]
     },
     {
@@ -28,20 +38,30 @@
       "choices": [
         {
           "text": "Integration testing",
-          "correct": true
+          "correct": true,
+          "explanation": "Integration testing is indeed a test level. Test levels are specific phases in the testing process that deal with particular testing objectives. Other test levels include unit testing, system testing, and acceptance testing."
         },
         {
           "text": "White box testing",
-          "correct": false
+          "correct": false,
+          "explanation": "White box testing is a test technique, not a test level. It refers to testing with knowledge of the internal code structure, but doesn't define when in the development process testing occurs."
         },
         {
           "text": "Exploratory testing",
-          "correct": false
+          "correct": false,
+          "explanation": "Exploratory testing is a testing approach or technique, not a test level. It involves simultaneous learning, test design, and test execution."
         },
         {
           "text": "Regression testing",
-          "correct": false
+          "correct": false,
+          "explanation": "Regression testing is a type of testing, not a test level. It focuses on retesting after changes to ensure existing functionality still works."
         }
+      ],
+      "keyPoints": [
+        "Test levels are distinct phases in the testing process",
+        "Main test levels are: unit, integration, system, and acceptance testing",
+        "Test techniques (like white-box) and types (like regression) are different from test levels",
+        "Each test level has specific objectives and scope"
       ]
     },
     {
@@ -49,20 +69,30 @@
       "choices": [
         {
           "text": "Verification: Are we building the product right? Validation: Are we building the right product?",
-          "correct": true
+          "correct": true,
+          "explanation": "This distinction is fundamental in software quality assurance. Verification focuses on checking if the product meets specified requirements (building it right), while validation ensures the product meets user needs (building the right thing)."
         },
         {
           "text": "They are the same thing",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect. While both are quality assurance activities, they have distinct purposes. Verification checks conformance to specifications, while validation checks if the product meets user needs."
         },
         {
           "text": "Verification is done by developers, validation by testers",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect. The distinction is not about who performs the activity, but rather what is being checked. Both developers and testers can perform both verification and validation activities."
         },
         {
           "text": "Verification is manual testing, validation is automated testing",
-          "correct": false
+          "correct": false,
+          "explanation": "This is incorrect. The distinction is not about how the testing is performed (manually or automated). Both verification and validation can use either manual or automated approaches."
         }
+      ],
+      "keyPoints": [
+        "Verification focuses on meeting specifications ('building it right')",
+        "Validation focuses on meeting user needs ('building the right thing')",
+        "Both activities can be performed by any team member",
+        "Both can use manual or automated approaches"
       ]
     }
   ]
