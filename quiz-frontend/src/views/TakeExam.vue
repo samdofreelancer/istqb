@@ -53,18 +53,44 @@ export default {
 
     const submitExam = async () => {
       try {
+        // Store detailed answer information including the question and selected choice details
+        const detailedAnswers = exam.value.questions.map(question => {
+          const selectedId = answers.value[question.id]
+          if (!selectedId) return null // Skip if no answer selected
+
+          return {
+            questionId: question.id,
+            choiceId: selectedId
+          }
+        }).filter(answer => answer !== null)
+
+        // Store the detailed answers in the store
+        examStore.$patch(state => {
+          state.userAnswers = detailedAnswers
+        })
+
+        // Format the answers for the API
+        const formattedAnswers = detailedAnswers.map(answer => ({
+          questionId: answer.questionId,
+          choiceId: answer.choiceId,
+        }));
+
         const attempt = {
           exam: { id: exam.value.id },
-          answers: Object.entries(answers.value).map(([questionId, selectedIds]) => ({
-            question: { id: parseInt(questionId) },
-            selectedChoiceIds: Array.isArray(selectedIds) ? selectedIds : selectedIds ? [selectedIds] : []
-          })).filter(answer => answer.selectedChoiceIds.length > 0)
+          answers: formattedAnswers.map(answer => ({
+            question: { id: answer.questionId },
+            selectedChoiceIds: [answer.choiceId]
+          }))
         }
-        
+
         console.log('Submitting attempt:', attempt)
+        // First store the user answers in the correct format
+        examStore.$patch(state => {
+          state.userAnswers = formattedAnswers
+        })
         const result = await examStore.submitAttempt(attempt)
         console.log('Received result:', result)
-        
+
         if (result && typeof result.score === 'number' && typeof result.totalQuestions === 'number') {
           router.push(`/result/${result.score}/${result.totalQuestions}`)
         } else {

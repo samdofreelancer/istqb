@@ -13,7 +13,10 @@ export const useExamStore = defineStore('exam', {
   state: () => ({
     exams: [],
     currentExam: null,
-    error: null
+    error: null,
+    userAnswers: [],
+    examResult: null,
+    currentAttempt: null
   }),
   
   actions: {
@@ -57,7 +60,12 @@ export const useExamStore = defineStore('exam', {
     
     async submitAttempt(attempt) {
       try {
+        // Store the current attempt
+        this.currentAttempt = attempt
+        // Note: User answers are already stored in the correct format by TakeExam.vue
+        
         const response = await api.post('/attempts/submit', attempt)
+        this.examResult = response.data
         this.error = null
         return response.data
       } catch (error) {
@@ -65,6 +73,12 @@ export const useExamStore = defineStore('exam', {
         this.error = error.response?.data?.message || 'Failed to submit attempt'
         throw error
       }
+    },
+
+    clearExamState() {
+      this.currentExam = null
+      this.userAnswers = []
+      this.examResult = null
     }
   }
 })
