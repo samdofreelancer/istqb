@@ -1,0 +1,6 @@
+/quiz-backend/target
+/quiz-frontend/node_modules
+/quiz-backend/.settings
+quiz-backend/.project
+quiz-backend/.factorypath
+quiz-backend/.classpath
