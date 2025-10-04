@@ -29,6 +29,9 @@ public class Question {
     @JsonManagedReference
     private Set<Choice> choices = new LinkedHashSet<>();
     
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<AttemptAnswer> attemptAnswers = new LinkedHashSet<>();
+    
     public void setChoices(List<Choice> choices) {
         this.choices.clear();
         if (choices != null) {

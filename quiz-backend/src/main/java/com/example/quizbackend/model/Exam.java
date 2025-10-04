@@ -25,7 +25,7 @@ public class Exam {
     @JsonManagedReference
     private Set<Question> questions = new LinkedHashSet<>();
     
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(Collection<Question> questions) {
         this.questions.clear();
         if (questions != null) {
             for (Question question : questions) {
