@@ -18,6 +18,9 @@ public class Choice {
     
     private boolean correct;
     
+    @Column(columnDefinition = "TEXT")
+    private String explanation;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     private Question question;
