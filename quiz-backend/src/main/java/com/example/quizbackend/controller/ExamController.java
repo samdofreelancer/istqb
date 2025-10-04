@@ -55,4 +55,23 @@ public class ExamController {
                 .body(Map.of("message", "Failed to delete exam: " + e.getMessage()));
         }
     }
+
+    @GetMapping(
+        value = "/export/{id}",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<?> exportExam(@PathVariable Long id) {
+        try {
+            Exam exam = examService.getExamById(id);
+            if (exam == null) {
+                return ResponseEntity.notFound().build();
+            }
+            // Remove attempts from the exam before exporting
+            exam.setAttempts(null);
+            return ResponseEntity.ok(exam);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                .body(Map.of("message", "Failed to export exam: " + e.getMessage()));
+        }
+    }
 }

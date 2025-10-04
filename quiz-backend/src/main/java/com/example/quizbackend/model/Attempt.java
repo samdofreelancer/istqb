@@ -1,5 +1,6 @@
 package com.example.quizbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,8 +18,12 @@ public class Attempt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(name = "exam_id")
+    private Long examId;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "exam_id")
+    @JoinColumn(name = "exam_id", insertable = false, updatable = false)
+    @JsonIgnore
     private Exam exam;
     
     private Integer score;

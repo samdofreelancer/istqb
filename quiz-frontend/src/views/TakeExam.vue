@@ -76,7 +76,7 @@ export default {
         }));
 
         const attempt = {
-          exam: { id: exam.value.id },
+          examId: exam.value.id,
           answers: formattedAnswers.map(answer => ({
             question: { id: answer.questionId },
             selectedChoiceIds: [answer.choiceId]

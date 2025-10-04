@@ -1,5 +1,6 @@
 package com.example.quizbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -26,6 +27,7 @@ public class Exam {
     private Set<Question> questions = new LinkedHashSet<>();
     
     @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set<Attempt> attempts = new LinkedHashSet<>();
     
     public void setQuestions(Collection<Question> questions) {

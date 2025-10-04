@@ -17,7 +17,7 @@ public class AttemptService {
     @Transactional
     public Attempt submitAttempt(Attempt attempt) {
         // Load the complete exam with questions and choices
-        Exam exam = examService.getExamById(attempt.getExam().getId());
+        Exam exam = examService.getExamById(attempt.getExamId());
         attempt.setExam(exam);
         attempt.setTimestamp(LocalDateTime.now());
         attempt.setTotalQuestions(exam.getQuestions().size());
