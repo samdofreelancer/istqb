@@ -149,7 +149,10 @@ let timer = null
 // Computed Properties
 const progressPercentage = computed(() => {
   if (!exam.value) return 0
-  return (currentQuestionIndex.value + 1) / exam.value.questions.length * 100
+  const answeredCount = Object.values(answers.value).filter(answer => 
+    Array.isArray(answer) ? answer.length > 0 : answer !== null
+  ).length
+  return (answeredCount / exam.value.questions.length) * 100
 })
 
 const answeredCount = computed(() => {
