@@ -414,8 +414,8 @@ onBeforeUnmount(() => {
 }
 
 .nav-item.answered {
-  background-color: #e8f5e9;
-  border-color: #4CAF50;
+  background-color: #d3d3d3; /* light gray */
+  border-color: #a9a9a9; /* dark gray */
 }
 
 .nav-item.marked {
