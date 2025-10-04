@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/exams")
@@ -20,13 +21,14 @@ public class ExamController {
         consumes = {MediaType.APPLICATION_JSON_VALUE},
         produces = {MediaType.APPLICATION_JSON_VALUE}
     )
-    public ResponseEntity<Exam> importExam(@RequestBody Exam exam) {
+    public ResponseEntity<?> importExam(@RequestBody Exam exam) {
         try {
             Exam importedExam = examService.importExam(exam);
             return ResponseEntity.ok(importedExam);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest()
+                .body(Map.of("message", e.getMessage() != null ? e.getMessage() : "Invalid exam format"));
         }
     }
 

@@ -124,11 +124,20 @@
       </div>
     </div>
   </div>
+  
+  <!-- Preview Dialog -->
+  <PreviewDialog
+    v-if="currentPreviewExam"
+    :is-open="isPreviewOpen"
+    :exam="currentPreviewExam"
+    @close="closePreview"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useExamStore } from '../stores/exam'
+import PreviewDialog from '../components/PreviewDialog.vue'
 
 const examStore = useExamStore()
 const searchQuery = ref('')
@@ -167,9 +176,22 @@ const filteredExams = computed(() => {
   })
 })
 
-const previewExam = (exam) => {
-  // Implement preview functionality
-  console.log('Preview exam:', exam)
+const isPreviewOpen = ref(false)
+const currentPreviewExam = ref(null)
+
+const previewExam = async (exam) => {
+  try {
+    const examDetails = await examStore.previewExam(exam.id)
+    currentPreviewExam.value = examDetails
+    isPreviewOpen.value = true
+  } catch (error) {
+    console.error('Failed to preview exam:', error)
+  }
+}
+
+const closePreview = () => {
+  isPreviewOpen.value = false
+  currentPreviewExam.value = null
 }
 </script>
 

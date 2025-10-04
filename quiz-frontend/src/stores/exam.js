@@ -57,6 +57,17 @@ export const useExamStore = defineStore('exam', {
         throw error
       }
     },
+
+    async previewExam(id) {
+      try {
+        const response = await api.get(`/exams/${id}`)
+        return response.data
+      } catch (error) {
+        console.error('Preview error:', error)
+        this.error = error.response?.data?.message || 'Failed to preview exam'
+        throw error
+      }
+    },
     
     async submitAttempt(attempt) {
       try {
