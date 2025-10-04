@@ -119,6 +119,12 @@
             >
               Preview
             </button>
+            <button
+              @click="confirmDelete(exam)"
+              class="px-4 py-2 border border-red-300 text-red-700 font-medium rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
+            >
+              <span class="material-icons text-sm">delete</span>
+            </button>
           </div>
         </div>
       </div>
@@ -192,6 +198,16 @@ const previewExam = async (exam) => {
 const closePreview = () => {
   isPreviewOpen.value = false
   currentPreviewExam.value = null
+}
+
+const confirmDelete = async (exam) => {
+  if (confirm(`Are you sure you want to delete "${exam.title}"?`)) {
+    try {
+      await examStore.deleteExam(exam.id)
+    } catch (error) {
+      alert('Failed to delete exam: ' + error.message)
+    }
+  }
 }
 </script>
 

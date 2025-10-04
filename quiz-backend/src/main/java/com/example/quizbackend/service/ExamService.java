@@ -57,4 +57,11 @@ public class ExamService {
         return examRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Exam not found"));
     }
+
+    @Transactional
+    public void deleteExam(Long id) {
+        Exam exam = examRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Exam not found"));
+        examRepository.delete(exam);
+    }
 }

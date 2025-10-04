@@ -44,4 +44,15 @@ public class ExamController {
     public ResponseEntity<Exam> getExamById(@PathVariable Long id) {
         return ResponseEntity.ok(examService.getExamById(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteExam(@PathVariable Long id) {
+        try {
+            examService.deleteExam(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                .body(Map.of("message", "Failed to delete exam: " + e.getMessage()));
+        }
+    }
 }

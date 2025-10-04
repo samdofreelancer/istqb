@@ -68,6 +68,19 @@ export const useExamStore = defineStore('exam', {
         throw error
       }
     },
+
+    async deleteExam(id) {
+      try {
+        await api.delete(`/exams/${id}`)
+        // Remove the exam from the local state
+        this.exams = this.exams.filter(exam => exam.id !== id)
+        this.error = null
+      } catch (error) {
+        console.error('Delete error:', error)
+        this.error = error.response?.data?.message || 'Failed to delete exam'
+        throw error
+      }
+    },
     
     async submitAttempt(attempt) {
       try {
