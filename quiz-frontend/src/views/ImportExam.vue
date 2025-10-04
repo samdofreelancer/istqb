@@ -3,13 +3,16 @@
     <!-- Header -->
     <div class="mb-6">
       <h1 class="text-2xl font-semibold">Import Exam</h1>
+      <p class="text-gray-600 mt-2">Choose one method to provide your exam JSON.</p>
       <nav class="text-sm text-gray-600 mt-1">
-        <span>Exams</span> | <span>Import Exam</span>
+        Exams > Import Exam
       </nav>
     </div>
 
+    <p class="text-sm text-gray-500 mb-4">You only need to use one method.</p>
+
     <!-- Import Cards -->
-    <div class="grid gap-5 md:grid-cols-2 mb-6">
+    <div class="grid gap-4 md:grid-cols-2 mb-6">
       <!-- Paste JSON Card -->
       <div class="rounded-2xl border border-gray-200 bg-white shadow-sm p-4">
         <label for="paste-textarea" class="text-base font-semibold mb-1 block">Paste JSON</label>
@@ -127,6 +130,7 @@
         </span>
         <span v-else>Import</span>
       </button>
+      <p v-if="!valid" class="text-sm text-gray-500 mt-2 text-center">Paste or upload JSON to enable import.</p>
     </div>
   </div>
 </template>

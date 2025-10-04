@@ -1,196 +1,627 @@
 <template>
   <div class="take-exam" v-if="exam">
-    <h2>{{ exam.title }}</h2>
-    <p>{{ exam.description }}</p>
-    <div v-for="(question, index) in exam.questions" :key="question.id" class="question">
-      <h3>Question {{ index + 1 }}</h3>
-      <p>{{ question.text }}</p>
-      <div class="choices">
-        <template v-if="question.multiple">
-          <div v-for="choice in question.choices" :key="choice.id" class="choice-item">
-            <input type="checkbox" 
-                   :id="'choice-' + choice.id"
-                   v-model="answers[question.id]"
-                   :value="choice.id">
-            <label :for="'choice-' + choice.id">{{ choice.text }}</label>
-          </div>
-        </template>
-        <template v-else>
-          <div v-for="choice in question.choices" :key="choice.id" class="choice-item">
-            <input type="radio" 
-                   :id="'choice-' + choice.id"
-                   v-model="answers[question.id]"
-                   :value="choice.id"
-                   :name="'question-' + question.id">
-            <label :for="'choice-' + choice.id">{{ choice.text }}</label>
-          </div>
-        </template>
+    <!-- Sticky Header -->
+    <div class="exam-header">
+      <h1 class="exam-title">{{ exam.title }}</h1>
+      <div class="progress-bar">
+        <div class="progress-indicator" :style="{ width: progressPercentage + '%' }"></div>
+        <span class="progress-text">Question {{ currentQuestionIndex + 1 }} of {{ exam.questions.length }}</span>
+        <div v-if="exam.timeLimitSec" class="timer">
+          <span class="timer-icon">⏱️</span>
+          <span>{{ formattedTimeRemaining }}</span>
+        </div>
       </div>
     </div>
-    <button @click="submitExam" class="submit-btn">Submit Exam</button>
+
+    <!-- Description Card -->
+    <div class="description-card">
+      <p>{{ exam.description }}</p>
+    </div>
+
+    <!-- Main Content with Side Navigation -->
+    <div class="exam-content">
+      <!-- Question Navigation -->
+      <div class="question-nav">
+        <div v-for="(question, idx) in exam.questions" 
+             :key="question.id"
+             class="nav-item"
+             :class="{
+               'active': idx === currentQuestionIndex,
+               'answered': isQuestionAnswered(question.id),
+               'marked': markedQuestions[question.id]
+             }"
+             @click="navigateToQuestion(idx)">
+          {{ idx + 1 }}
+        </div>
+      </div>
+
+      <!-- Questions Area -->
+      <div class="questions-container">
+        <div v-for="(question, index) in exam.questions" 
+             :key="question.id" 
+             class="question"
+             :class="{ 'active': index === currentQuestionIndex }"
+             v-show="index === currentQuestionIndex">
+          <div class="question-header">
+            <h2>Question {{ index + 1 }}</h2>
+            <label class="mark-review">
+              <input type="checkbox" v-model="markedQuestions[question.id]">
+              Mark for Review
+            </label>
+          </div>
+          
+          <p class="question-text">{{ question.text }}</p>
+          
+          <div class="choices">
+            <template v-if="question.multiple">
+              <div v-for="choice in question.choices" 
+                   :key="choice.id" 
+                   class="choice-item"
+                   :class="{ 'selected': isChoiceSelected(question.id, choice.id) }"
+                   @click="toggleChoice(question.id, choice.id, question.multiple)">
+                <div class="choice-content">
+                  <input type="checkbox" 
+                         :id="'choice-' + choice.id"
+                         :checked="isChoiceSelected(question.id, choice.id)"
+                         @click.stop>
+                  <label :for="'choice-' + choice.id">{{ choice.text }}</label>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div v-for="choice in question.choices" 
+                   :key="choice.id" 
+                   class="choice-item"
+                   :class="{ 'selected': isChoiceSelected(question.id, choice.id) }"
+                   @click="toggleChoice(question.id, choice.id, false)">
+                <div class="choice-content">
+                  <input type="radio" 
+                         :id="'choice-' + choice.id"
+                         :checked="isChoiceSelected(question.id, choice.id)"
+                         :name="'question-' + question.id"
+                         @click.stop>
+                  <label :for="'choice-' + choice.id">{{ choice.text }}</label>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Footer -->
+    <div class="exam-footer">
+      <div class="navigation-buttons">
+        <button @click="previousQuestion" 
+                :disabled="currentQuestionIndex === 0"
+                class="nav-btn">
+          Previous
+        </button>
+        <button @click="nextQuestion" 
+                :disabled="currentQuestionIndex === exam.questions.length - 1"
+                class="nav-btn">
+          Next
+        </button>
+      </div>
+      <div class="action-buttons">
+        <button @click="saveProgress" class="save-btn">Save Progress</button>
+        <button @click="confirmSubmit" 
+                class="submit-btn"
+                :disabled="!canSubmit">
+          Submit Exam
+        </button>
+      </div>
+    </div>
+
+    <!-- Submit Confirmation Dialog -->
+    <div v-if="showSubmitDialog" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Submit Exam?</h3>
+        <p>You have answered {{ answeredCount }} out of {{ exam.questions.length }} questions.</p>
+        <p v-if="unansweredQuestions.length">
+          Warning: {{ unansweredQuestions.length }} questions are still unanswered.
+        </p>
+        <div class="modal-actions">
+          <button @click="showSubmitDialog = false" class="cancel-btn">Cancel</button>
+          <button @click="submitExam" class="confirm-btn">Confirm Submit</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { useExamStore } from '../stores/exam'
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default {
-  setup() {
-    const examStore = useExamStore()
-    const router = useRouter()
-    const exam = ref(null)
-    const answers = ref({})
+const examStore = useExamStore()
+const router = useRouter()
 
-    onMounted(async () => {
-      const id = router.currentRoute.value.params.id
-      exam.value = await examStore.fetchExamById(id)
-      exam.value.questions.forEach(q => {
-        answers.value[q.id] = q.multiple ? [] : null
-      })
-    })
+const exam = ref(null)
+const answers = ref({})
+const currentQuestionIndex = ref(0)
+const markedQuestions = ref({})
+const showSubmitDialog = ref(false)
+const timeRemaining = ref(0)
+let timer = null
 
-    const submitExam = async () => {
-      try {
-        // Store detailed answer information including the question and selected choice details
-        const detailedAnswers = exam.value.questions.map(question => {
-          const selectedId = answers.value[question.id]
-          if (!selectedId) return null // Skip if no answer selected
+// Computed Properties
+const progressPercentage = computed(() => {
+  if (!exam.value) return 0
+  return (currentQuestionIndex.value + 1) / exam.value.questions.length * 100
+})
 
-          return {
-            questionId: question.id,
-            choiceId: selectedId
-          }
-        }).filter(answer => answer !== null)
+const answeredCount = computed(() => {
+  return Object.values(answers.value).filter(answer => 
+    Array.isArray(answer) ? answer.length > 0 : answer !== null
+  ).length
+})
 
-        // Store the detailed answers in the store
-        examStore.$patch(state => {
-          state.userAnswers = detailedAnswers
-        })
+const unansweredQuestions = computed(() => {
+  if (!exam.value) return []
+  return exam.value.questions.filter(q => {
+    const answer = answers.value[q.id]
+    return Array.isArray(answer) ? answer.length === 0 : answer === null
+  })
+})
 
-        // Format the answers for the API
-        const formattedAnswers = detailedAnswers.map(answer => ({
-          questionId: answer.questionId,
-          choiceId: answer.choiceId,
-        }));
+const canSubmit = computed(() => answeredCount.value > 0)
 
-        const attempt = {
-          examId: exam.value.id,
-          answers: formattedAnswers.map(answer => ({
-            question: { id: answer.questionId },
-            selectedChoiceIds: [answer.choiceId]
-          }))
-        }
+const formattedTimeRemaining = computed(() => {
+  const minutes = Math.floor(timeRemaining.value / 60)
+  const seconds = timeRemaining.value % 60
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`
+})
 
-        console.log('Submitting attempt:', attempt)
-        // First store the user answers in the correct format
-        examStore.$patch(state => {
-          state.userAnswers = formattedAnswers
-        })
-        const result = await examStore.submitAttempt(attempt)
-        console.log('Received result:', result)
+// Methods
+const navigateToQuestion = (index) => {
+  currentQuestionIndex.value = index
+}
 
-        if (result && typeof result.score === 'number' && typeof result.totalQuestions === 'number') {
-          router.push(`/result/${result.score}/${result.totalQuestions}`)
-        } else {
-          console.error('Invalid result format:', result)
-          alert('Error submitting exam. Please try again.')
-        }
-      } catch (error) {
-        console.error('Error submitting exam:', error)
-        alert('Error submitting exam. Please try again.')
-      }
+const isQuestionAnswered = (questionId) => {
+  const answer = answers.value[questionId]
+  return Array.isArray(answer) ? answer.length > 0 : answer !== null
+}
+
+const isChoiceSelected = (questionId, choiceId) => {
+  const answer = answers.value[questionId]
+  if (Array.isArray(answer)) {
+    return answer.includes(choiceId)
+  }
+  return answer === choiceId
+}
+
+const toggleChoice = (questionId, choiceId, isMultiple) => {
+  if (isMultiple) {
+    if (!Array.isArray(answers.value[questionId])) {
+      answers.value[questionId] = []
     }
-
-    return {
-      exam,
-      answers,
-      submitExam
+    const index = answers.value[questionId].indexOf(choiceId)
+    if (index === -1) {
+      answers.value[questionId].push(choiceId)
+    } else {
+      answers.value[questionId].splice(index, 1)
     }
+  } else {
+    answers.value[questionId] = choiceId
   }
 }
+
+const previousQuestion = () => {
+  if (currentQuestionIndex.value > 0) {
+    currentQuestionIndex.value--
+  }
+}
+
+const nextQuestion = () => {
+  if (currentQuestionIndex.value < exam.value.questions.length - 1) {
+    currentQuestionIndex.value++
+  }
+}
+
+const saveProgress = async () => {
+  // TODO: Implement save progress functionality
+  alert('Progress saved!')
+}
+
+const confirmSubmit = () => {
+  showSubmitDialog.value = true
+}
+
+const submitExam = async () => {
+  try {
+    const detailedAnswers = exam.value.questions.map(question => {
+      const selectedIds = answers.value[question.id]
+      if (!selectedIds) return null
+
+      const choiceIds = Array.isArray(selectedIds) ? selectedIds : [selectedIds]
+      return {
+        question: { id: question.id },
+        selectedChoiceIds: choiceIds
+      }
+    }).filter(answer => answer !== null)
+
+    const attempt = {
+      examId: exam.value.id,
+      answers: detailedAnswers
+    }
+
+    const result = await examStore.submitAttempt(attempt)
+
+    if (result && typeof result.score === 'number' && typeof result.totalQuestions === 'number') {
+      router.push(`/result/${result.score}/${result.totalQuestions}`)
+    } else {
+      throw new Error('Invalid result format')
+    }
+  } catch (error) {
+    console.error('Error submitting exam:', error)
+    alert('Error submitting exam. Please try again.')
+  }
+}
+
+const startTimer = () => {
+  if (!exam.value?.timeLimitSec) return
+  
+  timeRemaining.value = exam.value.timeLimitSec
+  timer = setInterval(() => {
+    if (timeRemaining.value > 0) {
+      timeRemaining.value--
+    } else {
+      clearInterval(timer)
+      submitExam()
+    }
+  }, 1000)
+}
+
+// Lifecycle Hooks
+onMounted(async () => {
+  try {
+    const id = router.currentRoute.value.params.id
+    exam.value = await examStore.fetchExamById(id)
+    exam.value.questions.forEach(q => {
+      answers.value[q.id] = q.multiple ? [] : null
+      markedQuestions.value[q.id] = false
+    })
+    startTimer()
+  } catch (error) {
+    console.error('Error loading exam:', error)
+    alert('Error loading exam. Please try again.')
+    router.push('/')
+  }
+})
+
+onBeforeUnmount(() => {
+  if (timer) {
+    clearInterval(timer)
+  }
+})
 </script>
 
 <style scoped>
 .take-exam {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Header Styles */
+.exam-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.exam-title {
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  position: relative;
+  height: 4px;
+  background-color: #e9ecef;
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+
+.progress-indicator {
+  position: absolute;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.timer {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  background-color: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Description Card */
+.description-card {
+  background-color: white;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   max-width: 800px;
+  width: 100%;
+}
+
+/* Content Layout */
+.exam-content {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+}
+
+/* Question Navigation */
+.question-nav {
+  position: sticky;
+  top: 6rem;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s;
+}
+
+.nav-item.active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.nav-item.answered {
+  background-color: #e8f5e9;
+  border-color: #4CAF50;
+}
+
+.nav-item.marked {
+  border-color: #ffc107;
+  background-color: #fff8e1;
+}
+
+/* Questions Container */
+.questions-container {
+  flex: 1;
+  min-width: 0;
 }
 
 .question {
-  margin: 30px 0;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
-h2 {
-  color: #2c3e50;
-  margin-bottom: 10px;
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-h3 {
-  color: #34495e;
-  margin-bottom: 15px;
-}
-
-p {
-  color: #2c3e50;
+.question-text {
+  font-size: 1.125rem;
   line-height: 1.6;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
 }
 
+/* Choices */
 .choices {
-  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .choice-item {
-  margin: 10px 0;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.choice-content {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .choice-item:hover {
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
+  border-color: #4CAF50;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  margin-right: 10px;
-  cursor: pointer;
+.choice-item.selected {
+  background-color: #e8f5e9;
+  border-color: #4CAF50;
 }
 
-label {
+/* Footer */
+.exam-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.navigation-buttons,
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  background-color: white;
   cursor: pointer;
-  display: inline-block;
-  margin-left: 5px;
-  vertical-align: middle;
-  line-height: 1.4;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background-color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+.save-btn,
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.save-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.save-btn:hover {
+  background-color: #e9ecef;
 }
 
 .submit-btn {
-  display: block;
-  margin: 30px auto;
-  padding: 12px 30px;
   background-color: #4CAF50;
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   background-color: #45a049;
 }
 
 .submit-btn:disabled {
-  background-color: #cccccc;
+  opacity: 0.65;
   cursor: not-allowed;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-btn,
+.confirm-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exam-content {
+    flex-direction: column;
+  }
+
+  .question-nav {
+    position: static;
+    width: 100%;
+  }
+
+  .exam-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navigation-buttons,
+  .action-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.mark-review {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d;
 }
 </style>
