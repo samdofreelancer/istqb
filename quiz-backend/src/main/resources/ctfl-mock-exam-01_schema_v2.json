@@ -1,0 +1,1246 @@
+{
+  "title": "ISTQB Foundation Level Quiz",
+  "description": "Test your knowledge of ISTQB Foundation Level (CTFL v3.1.1) with a full 40‑question mock exam.",
+  "questions": [
+    {
+      "text": "Which of the following is NOT a testing objective?",
+      "choices": [
+        {
+          "text": "To find defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "To gain confidence in the quality of the software",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "To prove the software is error free",
+          "correct": true,
+          "explanation": "Testing cannot prove the absence of defects; it provides information and reduces risk."
+        },
+        {
+          "text": "To prevent defects by static testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Testing cannot prove the absence of defects; it provides information and reduces risk.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which of the following is a principle of testing?",
+      "choices": [
+        {
+          "text": "Exhaustive testing is possible",
+          "correct": false,
+          "explanation": "Incorrect because exhaustive testing is infeasible; we sample smartly instead."
+        },
+        {
+          "text": "Defects cluster together",
+          "correct": true,
+          "explanation": "Defect clustering: a small number of modules contain most defects."
+        },
+        {
+          "text": "Testing shows the software works correctly in all cases",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Testing starts after coding is complete",
+          "correct": false,
+          "explanation": "Incorrect because early testing is a core principle; planning and reviews start before or in parallel with coding."
+        }
+      ],
+      "keyPoints": [
+        "Defect clustering: a small number of modules contain most defects.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which activity belongs to test planning?",
+      "choices": [
+        {
+          "text": "Designing test data",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Estimating test effort",
+          "correct": true,
+          "explanation": "Effort estimation and strategy selection are part of planning."
+        },
+        {
+          "text": "Executing tests",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Writing defect reports",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Effort estimation and strategy selection are part of planning.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which is a correct difference between testing and debugging?",
+      "choices": [
+        {
+          "text": "Testing finds the cause of defects; debugging finds defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Testing prevents defects; debugging finds defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Testing finds defects; debugging removes defects",
+          "correct": true,
+          "explanation": "Testing reveals failures/defects; debugging locates and fixes their causes."
+        },
+        {
+          "text": "Testing removes defects; debugging prevents defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Testing reveals failures/defects; debugging locates and fixes their causes.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which is an example of a failure?",
+      "choices": [
+        {
+          "text": "A developer makes a coding mistake",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "A requirement is not clear",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "The system crashes when 500 users log in simultaneously",
+          "correct": true,
+          "explanation": "A failure is observed behavior deviating from expected results in execution."
+        },
+        {
+          "text": "A tester designs an invalid test case",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "A failure is observed behavior deviating from expected results in execution.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "What best explains the “pesticide paradox”?",
+      "choices": [
+        {
+          "text": "Testers should not fix defects themselves",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Running the same tests repeatedly will not find new defects",
+          "correct": true,
+          "explanation": "Tests need regular review and new cases to find new kinds of defects."
+        },
+        {
+          "text": "Test automation eliminates manual testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "The cost of testing increases over time",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Tests need regular review and new cases to find new kinds of defects.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which is a benefit of early testing?",
+      "choices": [
+        {
+          "text": "Defects found late are cheaper to fix",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Reduces the number of change requests",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Prevents defects from being introduced into requirements/design",
+          "correct": true,
+          "explanation": "Early static reviews of requirements/design help prevent defects."
+        },
+        {
+          "text": "Ensures 100% coverage",
+          "correct": false,
+          "explanation": "Incorrect because testing cannot prove the absence of defects or guarantee 100% bug‑free software."
+        }
+      ],
+      "keyPoints": [
+        "Early static reviews of requirements/design help prevent defects.",
+        "Testing reduces risk, never proves zero defects",
+        "Failures are observed deviations during execution",
+        "Testing and debugging are distinct activities"
+      ]
+    },
+    {
+      "text": "Which is a characteristic of the V-Model?",
+      "choices": [
+        {
+          "text": "Testing is left until the end",
+          "correct": false,
+          "explanation": "Incorrect because early testing is a core principle; planning and reviews start before or in parallel with coding."
+        },
+        {
+          "text": "Testing is planned in parallel with development phases",
+          "correct": true,
+          "explanation": "Each development phase has a corresponding test level planned in parallel."
+        },
+        {
+          "text": "Testing starts after code is complete",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "It only supports waterfall development",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Each development phase has a corresponding test level planned in parallel.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "Which is a typical objective of acceptance testing?",
+      "choices": [
+        {
+          "text": "Verify the system is ready for deployment",
+          "correct": true,
+          "explanation": "Acceptance testing evaluates fitness for use and readiness for release."
+        },
+        {
+          "text": "Find defects in system modules",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Test interactions between components",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Validate internal design specifications",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Acceptance testing evaluates fitness for use and readiness for release.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "Which statement is true for maintenance testing?",
+      "choices": [
+        {
+          "text": "It is always regression testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "It is only done after a major release",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "It is triggered by changes, migration, or retirement",
+          "correct": true,
+          "explanation": "Maintenance testing is triggered by changes and other maintenance events."
+        },
+        {
+          "text": "It is performed only by developers",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Maintenance testing is triggered by changes and other maintenance events.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "What is the BEST description of system testing?",
+      "choices": [
+        {
+          "text": "Testing individual units or components",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Testing integrated components to verify interfaces",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Testing the system as a whole against requirements",
+          "correct": true,
+          "explanation": "System testing validates the entire system against specified requirements."
+        },
+        {
+          "text": "Testing performed by customers at their site",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "System testing validates the entire system against specified requirements.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "Which is typically a trigger for regression testing?",
+      "choices": [
+        {
+          "text": "Test environment change",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "A new defect reported in production",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Code change to fix a defect",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "All of the above",
+          "correct": true,
+          "explanation": "Any change or risk can trigger regression testing."
+        }
+      ],
+      "keyPoints": [
+        "Any change or risk can trigger regression testing.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "What is the main purpose of integration testing?",
+      "choices": [
+        {
+          "text": "Check if the system meets business requirements",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Check interfaces/interactions between components",
+          "correct": true,
+          "explanation": "Integration testing focuses on interfaces and interactions."
+        },
+        {
+          "text": "Check if the system works in the user’s environment",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Check if the system is secure",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Integration testing focuses on interfaces and interactions.",
+        "Plan test levels alongside development (e.g., V‑Model)",
+        "Regression testing is triggered by change or risk",
+        "Acceptance tests evaluate fitness for use"
+      ]
+    },
+    {
+      "text": "Which is NOT a benefit of static testing?",
+      "choices": [
+        {
+          "text": "Early detection of defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Reduced development cost",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Increased test execution effort",
+          "correct": true,
+          "explanation": "Static testing reduces later execution effort by finding defects early."
+        },
+        {
+          "text": "Improved team communication",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Static testing reduces later execution effort by finding defects early.",
+        "Static testing finds defects early, without execution",
+        "Formal reviews have defined roles (Moderator, Scribe, etc.)",
+        "Static analysis detects issues like leaks and unused code"
+      ]
+    },
+    {
+      "text": "In a formal review, who runs the meeting?",
+      "choices": [
+        {
+          "text": "Author",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Moderator",
+          "correct": true,
+          "explanation": "The moderator facilitates and runs the review meeting."
+        },
+        {
+          "text": "Reviewer",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Scribe",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "The moderator facilitates and runs the review meeting.",
+        "Static testing finds defects early, without execution",
+        "Formal reviews have defined roles (Moderator, Scribe, etc.)",
+        "Static analysis detects issues like leaks and unused code"
+      ]
+    },
+    {
+      "text": "Which defect can static analysis tools typically find?",
+      "choices": [
+        {
+          "text": "Memory leaks",
+          "correct": true,
+          "explanation": "Static analysis can detect resource leaks, unused code, and similar issues."
+        },
+        {
+          "text": "Incorrect expected results",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Performance bottlenecks",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Integration issues",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Static analysis can detect resource leaks, unused code, and similar issues.",
+        "Static testing finds defects early, without execution",
+        "Formal reviews have defined roles (Moderator, Scribe, etc.)",
+        "Static analysis detects issues like leaks and unused code"
+      ]
+    },
+    {
+      "text": "Equivalence partitioning is BEST used to:",
+      "choices": [
+        {
+          "text": "Reduce the number of test cases while maintaining coverage",
+          "correct": true,
+          "explanation": "EP reduces redundant tests by grouping inputs with similar behavior."
+        },
+        {
+          "text": "Increase code coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Find boundary defects",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Guarantee all input values are tested",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "EP reduces redundant tests by grouping inputs with similar behavior.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Boundary value testing for an input field that accepts 1 to 100:",
+      "choices": [
+        {
+          "text": "Test inputs 0, 50, 100",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Test inputs 1, 50, 100",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Test inputs 0, 1, 100, 101",
+          "correct": true,
+          "explanation": "Test just below/at/at upper/just above boundary values."
+        },
+        {
+          "text": "Test inputs 2, 99",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Test just below/at/at upper/just above boundary values.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which technique is MOST useful for combinations of business rules?",
+      "choices": [
+        {
+          "text": "Decision table testing",
+          "correct": true,
+          "explanation": "Decision tables model combinations of conditions and actions."
+        },
+        {
+          "text": "Boundary value analysis",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "State transition testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Exploratory testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Decision tables model combinations of conditions and actions.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which defect would state transition testing detect?",
+      "choices": [
+        {
+          "text": "System accepts an invalid input",
+          "correct": false,
+          "explanation": "Incorrect because that suits black‑box input validation; state transition focuses on states and transitions."
+        },
+        {
+          "text": "System goes to the wrong next state",
+          "correct": true,
+          "explanation": "It validates transitions and actions between states."
+        },
+        {
+          "text": "System ignores equivalence classes",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "System handles boundaries incorrectly",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "It validates transitions and actions between states.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which is a valid white-box coverage measure?",
+      "choices": [
+        {
+          "text": "Requirements coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Decision coverage",
+          "correct": true,
+          "explanation": "Decision (branch) coverage is a white-box structural metric."
+        },
+        {
+          "text": "Use case coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Equivalence partition coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Decision (branch) coverage is a white-box structural metric.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which is a defect-based technique?",
+      "choices": [
+        {
+          "text": "Error guessing",
+          "correct": true,
+          "explanation": "Error guessing leverages tester experience of typical defect patterns."
+        },
+        {
+          "text": "Boundary value analysis",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "State transition testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Use case testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Error guessing leverages tester experience of typical defect patterns.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which technique is MOST useful for user journeys?",
+      "choices": [
+        {
+          "text": "Use case testing",
+          "correct": true,
+          "explanation": "Use cases represent user goals and flows through the system."
+        },
+        {
+          "text": "Decision table testing",
+          "correct": false,
+          "explanation": "Not the best‑fit technique for what the question targets."
+        },
+        {
+          "text": "Statement coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Path testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Use cases represent user goals and flows through the system.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Path coverage is an example of which technique?",
+      "choices": [
+        {
+          "text": "Black-box",
+          "correct": false,
+          "explanation": "Incorrect because path/statement/decision coverage are white‑box structural measures."
+        },
+        {
+          "text": "White-box",
+          "correct": true,
+          "explanation": "Path/statement/decision coverage are structural white-box techniques."
+        },
+        {
+          "text": "Experience-based",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Static",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Path/statement/decision coverage are structural white-box techniques.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which technique is experience-based?",
+      "choices": [
+        {
+          "text": "Decision table",
+          "correct": false,
+          "explanation": "Not the best‑fit technique for what the question targets."
+        },
+        {
+          "text": "Boundary value",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Error guessing",
+          "correct": true,
+          "explanation": "Error guessing relies on tester experience and intuition."
+        },
+        {
+          "text": "State transition",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Error guessing relies on tester experience and intuition.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Main advantage of exploratory testing is:",
+      "choices": [
+        {
+          "text": "It guarantees coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "It uses formal test cases",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "It lets testers apply knowledge and intuition",
+          "correct": true,
+          "explanation": "Exploratory testing emphasizes learning, design, and execution in one."
+        },
+        {
+          "text": "It is always automated",
+          "correct": false,
+          "explanation": "Incorrect—ISTQB does not mandate automation; many activities are manual or mixed."
+        }
+      ],
+      "keyPoints": [
+        "Exploratory testing emphasizes learning, design, and execution in one.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which of the following is NOT a black-box technique?",
+      "choices": [
+        {
+          "text": "Decision table testing",
+          "correct": false,
+          "explanation": "Not the best‑fit technique for what the question targets."
+        },
+        {
+          "text": "State transition testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Statement coverage",
+          "correct": true,
+          "explanation": "Statement/decision/path are white-box structural techniques."
+        },
+        {
+          "text": "Equivalence partitioning",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Statement/decision/path are white-box structural techniques.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Technique MOST likely for financial calculation rules:",
+      "choices": [
+        {
+          "text": "Decision table testing",
+          "correct": true,
+          "explanation": "Decision tables handle complex rule combinations in finance."
+        },
+        {
+          "text": "State transition testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Path testing",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Statement coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Decision tables handle complex rule combinations in finance.",
+        "Black‑box: EP, BVA, Decision tables, State transitions",
+        "White‑box: statement/decision/path coverage",
+        "Experience‑based: error guessing, exploratory testing"
+      ]
+    },
+    {
+      "text": "Which of the following is a test work product?",
+      "choices": [
+        {
+          "text": "Test plan",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Test case specification",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Test summary report",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "All of the above",
+          "correct": true,
+          "explanation": "All listed artifacts are recognized test work products."
+        }
+      ],
+      "keyPoints": [
+        "All listed artifacts are recognized test work products.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Which of the following is NOT a test exit criterion?",
+      "choices": [
+        {
+          "text": "All planned test cases executed",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "No open defects remain",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "100% decision coverage achieved",
+          "correct": false,
+          "explanation": "Incorrect because testing cannot prove the absence of defects or guarantee 100% bug‑free software."
+        },
+        {
+          "text": "Test environment installed",
+          "correct": true,
+          "explanation": "Exit criteria concern completion/quality goals, not environment setup."
+        }
+      ],
+      "keyPoints": [
+        "Exit criteria concern completion/quality goals, not environment setup.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Risk-based testing prioritizes tests based on:",
+      "choices": [
+        {
+          "text": "Complexity and size of test cases",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Tester experience",
+          "correct": false,
+          "explanation": "Incorrect because risk‑based testing prioritizes by impact × likelihood, not by individual experience."
+        },
+        {
+          "text": "Impact and likelihood of failure",
+          "correct": true,
+          "explanation": "Risk = Impact × Likelihood; higher risk gets higher priority."
+        },
+        {
+          "text": "Number of developers available",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Risk = Impact × Likelihood; higher risk gets higher priority.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Which of the following is a project risk?",
+      "choices": [
+        {
+          "text": "Delays in test environment setup",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "A defect in a payment calculation module",
+          "correct": false,
+          "explanation": "Incorrect because those are product risks; project risks relate to schedule, resources, etc."
+        },
+        {
+          "text": "A tester leaving the company",
+          "correct": true,
+          "explanation": "Project risks threaten project success (schedule, resources)."
+        },
+        {
+          "text": "A requirement being misunderstood",
+          "correct": false,
+          "explanation": "Incorrect because those are product risks; project risks relate to schedule, resources, etc."
+        }
+      ],
+      "keyPoints": [
+        "Project risks threaten project success (schedule, resources).",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Main purpose of a test summary report:",
+      "choices": [
+        {
+          "text": "Present detailed defect descriptions",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Summarize test activities and results",
+          "correct": true,
+          "explanation": "It communicates what was tested, how, and with what results."
+        },
+        {
+          "text": "Provide detailed technical analysis",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Log individual test executions",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "It communicates what was tested, how, and with what results.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Test monitoring involves:",
+      "choices": [
+        {
+          "text": "Checking test progress against plan",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Reporting deviations",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Taking corrective actions",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "All of the above",
+          "correct": true,
+          "explanation": "Monitoring & control compare plan vs. actual and steer accordingly."
+        }
+      ],
+      "keyPoints": [
+        "Monitoring & control compare plan vs. actual and steer accordingly.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Which of the following is a test metric?",
+      "choices": [
+        {
+          "text": "Number of test cases executed",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Defects found per test run",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Defect density",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "All of the above",
+          "correct": true,
+          "explanation": "All listed items are standard test metrics."
+        }
+      ],
+      "keyPoints": [
+        "All listed items are standard test metrics.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Which factor MOST influences test estimation?",
+      "choices": [
+        {
+          "text": "Number of developers",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Availability of test tools",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Complexity of the system",
+          "correct": true,
+          "explanation": "Complexity drives effort, scope, and risk in estimation."
+        },
+        {
+          "text": "Tester’s salary",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Complexity drives effort, scope, and risk in estimation.",
+        "Risk = Impact × Likelihood drives priorities",
+        "Exit criteria measure completion and quality goals",
+        "Monitoring compares plan vs actual and steers actions"
+      ]
+    },
+    {
+      "text": "Which is a test management tool feature?",
+      "choices": [
+        {
+          "text": "Executing test cases automatically",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Managing test cases, test data, and results",
+          "correct": true,
+          "explanation": "Test management tools organize testware, traceability, and reporting."
+        },
+        {
+          "text": "Static code analysis",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Measuring code coverage",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Test management tools organize testware, traceability, and reporting.",
+        "Choose tools by purpose: manage, execute, analyze",
+        "Static analysis enforces coding rules without execution",
+        "Beware unrealistic expectations from automation"
+      ]
+    },
+    {
+      "text": "Which tool is MOST useful for checking coding standards?",
+      "choices": [
+        {
+          "text": "Test execution tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Static analysis tool",
+          "correct": true,
+          "explanation": "Static analysis tools check coding rules and potential defects."
+        },
+        {
+          "text": "Performance testing tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Defect management tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Static analysis tools check coding rules and potential defects.",
+        "Choose tools by purpose: manage, execute, analyze",
+        "Static analysis enforces coding rules without execution",
+        "Beware unrealistic expectations from automation"
+      ]
+    },
+    {
+      "text": "Which tool helps link requirements to test cases?",
+      "choices": [
+        {
+          "text": "Test management tool",
+          "correct": true,
+          "explanation": "Management tools support traceability from requirements to tests/defects."
+        },
+        {
+          "text": "Performance testing tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Static analysis tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Monitoring tool",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Management tools support traceability from requirements to tests/defects.",
+        "Choose tools by purpose: manage, execute, analyze",
+        "Static analysis enforces coding rules without execution",
+        "Beware unrealistic expectations from automation"
+      ]
+    },
+    {
+      "text": "Which is a potential risk of test automation?",
+      "choices": [
+        {
+          "text": "Increased repeatability",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Faster execution",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        },
+        {
+          "text": "Unrealistic expectations of tool capabilities",
+          "correct": true,
+          "explanation": "Overestimating what tools can do causes project and quality risks."
+        },
+        {
+          "text": "Reduced regression effort",
+          "correct": false,
+          "explanation": "Incorrect because it does not align with the ISTQB definition or objective addressed in this question."
+        }
+      ],
+      "keyPoints": [
+        "Overestimating what tools can do causes project and quality risks.",
+        "Choose tools by purpose: manage, execute, analyze",
+        "Static analysis enforces coding rules without execution",
+        "Beware unrealistic expectations from automation"
+      ]
+    }
+  ]
+}
