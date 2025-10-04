@@ -381,6 +381,7 @@ onBeforeUnmount(() => {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  padding-bottom: 5rem; /* Add bottom padding to avoid content hidden behind fixed footer */
 }
 
 /* Question Navigation */
@@ -487,16 +488,18 @@ onBeforeUnmount(() => {
 
 /* Footer */
 .exam-footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   background-color: white;
-  padding: 1rem;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .navigation-buttons,
