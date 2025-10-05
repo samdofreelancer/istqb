@@ -1,6 +1,7 @@
 {
   "title": "ISTQB Foundation Level Quiz",
   "description": "Test your knowledge of ISTQB Foundation Level (CTFL v3.1.1) with a full 40‑question mock exam.",
+  "timeLimitSec": 1800,
   "questions": [
     {
       "text": "Which of the following is NOT a testing objective?",

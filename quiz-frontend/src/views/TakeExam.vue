@@ -54,7 +54,7 @@
           
           <div class="choices">
             <template v-if="question.multiple">
-              <div v-for="choice in question.choices" 
+              <div v-for="(choice, idx) in question.choices" 
                    :key="choice.id" 
                    class="choice-item"
                    :class="{ 'selected': isChoiceSelected(question.id, choice.id) }"
@@ -64,12 +64,12 @@
                          :id="'choice-' + choice.id"
                          :checked="isChoiceSelected(question.id, choice.id)"
                          @click.stop>
-                  <label :for="'choice-' + choice.id">{{ choice.text }}</label>
+                  <label :for="'choice-' + choice.id">{{ String.fromCharCode(65 + idx) }}. {{ choice.text }}</label>
                 </div>
               </div>
             </template>
             <template v-else>
-              <div v-for="choice in question.choices" 
+              <div v-for="(choice, idx) in question.choices" 
                    :key="choice.id" 
                    class="choice-item"
                    :class="{ 'selected': isChoiceSelected(question.id, choice.id) }"
@@ -80,7 +80,7 @@
                          :checked="isChoiceSelected(question.id, choice.id)"
                          :name="'question-' + question.id"
                          @click.stop>
-                  <label :for="'choice-' + choice.id">{{ choice.text }}</label>
+                  <label :for="'choice-' + choice.id">{{ String.fromCharCode(65 + idx) }}. {{ choice.text }}</label>
                 </div>
               </div>
             </template>

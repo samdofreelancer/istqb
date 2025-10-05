@@ -86,10 +86,20 @@ export const useExamStore = defineStore('exam', {
       try {
         // Store the current attempt
         this.currentAttempt = attempt
-        // Note: User answers are already stored in the correct format by TakeExam.vue
+        // Convert answers object to userAnswers array supporting multiple selected choices per question
+        this.userAnswers = []
+        attempt.answers.forEach(answer => {
+          answer.selectedChoiceIds.forEach(choiceId => {
+            this.userAnswers.push({
+              questionId: answer.question.id,
+              choiceId: choiceId
+            })
+          })
+        })
         
         const response = await api.post('/attempts/submit', attempt)
         this.examResult = response.data
+        this.populateUserAnswersFromAttempt()
         this.error = null
         return response.data
       } catch (error) {
@@ -99,10 +109,25 @@ export const useExamStore = defineStore('exam', {
       }
     },
 
+    populateUserAnswersFromAttempt() {
+      this.userAnswers = []
+      if (this.currentAttempt && this.currentAttempt.answers) {
+        this.currentAttempt.answers.forEach(answer => {
+          answer.selectedChoiceIds.forEach(choiceId => {
+            this.userAnswers.push({
+              questionId: answer.question.id,
+              choiceId: choiceId
+            })
+          })
+        })
+      }
+    },
+
     clearExamState() {
       this.currentExam = null
       this.userAnswers = []
       this.examResult = null
+      this.currentAttempt = null
     }
   }
 })
