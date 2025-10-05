@@ -26,8 +26,9 @@ public class Question {
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "question_id")
+    @OrderColumn(name = "choice_order")
     @JsonManagedReference
-    private Set<Choice> choices = new LinkedHashSet<>();
+    private List<Choice> choices = new ArrayList<>();
     
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<AttemptAnswer> attemptAnswers = new LinkedHashSet<>();

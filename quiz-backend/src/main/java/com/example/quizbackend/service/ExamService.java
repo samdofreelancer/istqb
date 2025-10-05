@@ -26,7 +26,7 @@ public class ExamService {
             toUpdate.setTimeLimitSec(exam.getTimeLimitSec());
             
             // Clear and update questions
-            Set<Question> questions = toUpdate.getQuestions();
+            List<Question> questions = toUpdate.getQuestions();
             questions.clear(); // This will trigger cascade delete due to orphanRemoval=true
             
             // Add new questions

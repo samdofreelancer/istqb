@@ -23,8 +23,9 @@ public class Exam {
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "exam_id")
+    @OrderColumn(name = "question_order")
     @JsonManagedReference
-    private Set<Question> questions = new LinkedHashSet<>();
+    private List<Question> questions = new ArrayList<>();
     
     @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
