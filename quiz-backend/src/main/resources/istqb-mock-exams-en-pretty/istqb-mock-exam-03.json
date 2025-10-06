@@ -1,0 +1,888 @@
+{
+  "title": "ISTQB Foundation Mock Exam 03",
+  "version": "CTFL v3.1.1 style",
+  "generated_at": "2025-10-06T14:56:16Z",
+  "description": "40-question official-style mock exam for ISTQB CTFL (English). Includes answers and explanations.",
+  "questions": [
+    {
+      "text": "Which statement about good test cases is TRUE?",
+      "choices": [
+        {
+          "text": "They should be vague to allow flexibility",
+          "correct": false
+        },
+        {
+          "text": "They should never be automated",
+          "correct": false
+        },
+        {
+          "text": "They should be clear, repeatable, and traceable to requirements",
+          "correct": true
+        },
+        {
+          "text": "They should avoid negative paths",
+          "correct": false
+        }
+      ],
+      "explanation": "Good test cases are unambiguous, repeatable, and traceable; they include positive and negative scenarios and may be automated."
+    },
+    {
+      "text": "Equivalence partitioning is used to:",
+      "choices": [
+        {
+          "text": "Measure code coverage",
+          "correct": false
+        },
+        {
+          "text": "Measure system performance",
+          "correct": false
+        },
+        {
+          "text": "Test component interactions",
+          "correct": false
+        },
+        {
+          "text": "Reduce test cases by grouping inputs with similar behavior",
+          "correct": true
+        }
+      ],
+      "explanation": "EP groups inputs expected to be treated equivalently, allowing one representative per partition to reduce redundant tests."
+    },
+    {
+      "text": "Risk exposure is commonly defined as:",
+      "choices": [
+        {
+          "text": "Incidents ÷ Test cases",
+          "correct": false
+        },
+        {
+          "text": "Severity × Priority",
+          "correct": false
+        },
+        {
+          "text": "MTBF × MTTR",
+          "correct": false
+        },
+        {
+          "text": "Probability × Impact",
+          "correct": true
+        }
+      ],
+      "explanation": "Risk exposure combines the likelihood of occurrence and the consequence (impact) to prioritize testing."
+    },
+    {
+      "text": "State transition testing is best applied when:",
+      "choices": [
+        {
+          "text": "We test UI layout consistency",
+          "correct": false
+        },
+        {
+          "text": "System behavior depends on sequences of events/state changes",
+          "correct": true
+        },
+        {
+          "text": "We need statement coverage",
+          "correct": false
+        },
+        {
+          "text": "Inputs are unordered discrete values",
+          "correct": false
+        }
+      ],
+      "explanation": "It models states and transitions; ideal where behavior depends on history or events."
+    },
+    {
+      "text": "Which is a valid reason to stop testing?",
+      "choices": [
+        {
+          "text": "The team is out of time and has no report",
+          "correct": false
+        },
+        {
+          "text": "No defects were found in the last hour",
+          "correct": false
+        },
+        {
+          "text": "All possible tests have been executed",
+          "correct": false
+        },
+        {
+          "text": "Exit criteria met and residual risk is acceptable",
+          "correct": true
+        }
+      ],
+      "explanation": "Testing stops when exit criteria are met and the residual risk is acceptable. Exhaustive testing is impossible."
+    },
+    {
+      "text": "What does an entry criterion represent?",
+      "choices": [
+        {
+          "text": "A condition required before starting a test activity",
+          "correct": true
+        },
+        {
+          "text": "A runtime monitor",
+          "correct": false
+        },
+        {
+          "text": "A list of defects to be fixed",
+          "correct": false
+        },
+        {
+          "text": "A condition to stop testing",
+          "correct": false
+        }
+      ],
+      "explanation": "Entry criteria ensure readiness (e.g., environment prepared, build available, reviewed test cases) before execution begins."
+    },
+    {
+      "text": "Which of the following is a structural (white‑box) technique?",
+      "choices": [
+        {
+          "text": "Decision testing",
+          "correct": true
+        },
+        {
+          "text": "Use case testing",
+          "correct": false
+        },
+        {
+          "text": "Equivalence partitioning",
+          "correct": false
+        },
+        {
+          "text": "Boundary value analysis",
+          "correct": false
+        }
+      ],
+      "explanation": "Decision testing (branch coverage) requires knowledge of internal logic and ensures each decision outcome is exercised."
+    },
+    {
+      "text": "Which activity belongs to test closure?",
+      "choices": [
+        {
+          "text": "Execute regression tests",
+          "correct": false
+        },
+        {
+          "text": "Analyze lessons learned and archive testware",
+          "correct": true
+        },
+        {
+          "text": "Design test cases",
+          "correct": false
+        },
+        {
+          "text": "Allocate test environment",
+          "correct": false
+        }
+      ],
+      "explanation": "Closure consolidates results, collects metrics, documents lessons learned, and archives testware."
+    },
+    {
+      "text": "Which statement about independent testing is TRUE?",
+      "choices": [
+        {
+          "text": "It reduces the risk of tester bias",
+          "correct": true
+        },
+        {
+          "text": "It must be scheduled after system testing",
+          "correct": false
+        },
+        {
+          "text": "It is performed only by external specialists",
+          "correct": false
+        },
+        {
+          "text": "It always finds different defects than developers",
+          "correct": false
+        }
+      ],
+      "explanation": "Independence (testers not authoring the code) provides a fresh, unbiased perspective; it can occur at any test level."
+    },
+    {
+      "text": "Decision table testing is especially useful for:",
+      "choices": [
+        {
+          "text": "Complex combinations of conditions and actions",
+          "correct": true
+        },
+        {
+          "text": "Load testing scenarios",
+          "correct": false
+        },
+        {
+          "text": "Measuring branch coverage",
+          "correct": false
+        },
+        {
+          "text": "Boundary checks of numeric inputs",
+          "correct": false
+        }
+      ],
+      "explanation": "Decision tables capture business rules with multiple conditions and associated actions to derive thorough test cases."
+    },
+    {
+      "text": "Which option is a valid exit criterion example?",
+      "choices": [
+        {
+          "text": "All test environments are prepared",
+          "correct": false
+        },
+        {
+          "text": "All defects are fixed",
+          "correct": false
+        },
+        {
+          "text": "Customer signed the test plan",
+          "correct": false
+        },
+        {
+          "text": "95% of planned tests executed with pass rate above threshold",
+          "correct": true
+        }
+      ],
+      "explanation": "Exit criteria are measurable conditions to conclude testing (e.g., execution % and pass rate). Environment readiness is entry criterion."
+    },
+    {
+      "text": "Which statement best describes confirmation testing (re‑testing)?",
+      "choices": [
+        {
+          "text": "Testing to ensure a specific previously found defect is resolved",
+          "correct": true
+        },
+        {
+          "text": "Testing to validate user needs",
+          "correct": false
+        },
+        {
+          "text": "Testing to ensure no unintended side effects occurred",
+          "correct": false
+        },
+        {
+          "text": "Testing to assess non‑functional attributes",
+          "correct": false
+        }
+      ],
+      "explanation": "Confirmation testing verifies that the reported defect was fixed; regression testing covers potential side effects elsewhere."
+    },
+    {
+      "text": "Which statement about test tools is TRUE?",
+      "choices": [
+        {
+          "text": "They remove the need for skilled testers",
+          "correct": false
+        },
+        {
+          "text": "They support testing but require processes, training, and maintenance",
+          "correct": true
+        },
+        {
+          "text": "They remove the need for a test strategy",
+          "correct": false
+        },
+        {
+          "text": "They guarantee higher product quality",
+          "correct": false
+        }
+      ],
+      "explanation": "Tools assist but do not replace strategy, process, or skill; they require training and upkeep to be effective."
+    },
+    {
+      "text": "In the V‑Model, which development artifact maps to ACCEPTANCE testing on the validation side?",
+      "choices": [
+        {
+          "text": "System design",
+          "correct": false
+        },
+        {
+          "text": "Module design",
+          "correct": false
+        },
+        {
+          "text": "Detailed design",
+          "correct": false
+        },
+        {
+          "text": "Business requirements",
+          "correct": true
+        }
+      ],
+      "explanation": "Acceptance testing validates business requirements; system testing maps to system design; integration maps to architecture; unit to module."
+    },
+    {
+      "text": "Which is a non‑functional requirement?",
+      "choices": [
+        {
+          "text": "The system must store user profiles",
+          "correct": false
+        },
+        {
+          "text": "Search results must be returned within two seconds",
+          "correct": true
+        },
+        {
+          "text": "A confirmation email must be sent after registration",
+          "correct": false
+        },
+        {
+          "text": "The system must allow users to reset their password",
+          "correct": false
+        }
+      ],
+      "explanation": "Timing/performance constraints are non‑functional; the others are functional behaviors."
+    },
+    {
+      "text": "Which is a black‑box test design technique?",
+      "choices": [
+        {
+          "text": "Decision testing",
+          "correct": false
+        },
+        {
+          "text": "Statement testing",
+          "correct": false
+        },
+        {
+          "text": "Boundary value analysis",
+          "correct": true
+        },
+        {
+          "text": "Condition coverage",
+          "correct": false
+        }
+      ],
+      "explanation": "BVA focuses on input/output boundaries without knowledge of internal code; statement/decision/condition coverage are white‑box."
+    },
+    {
+      "text": "Which is a typical objective of acceptance testing?",
+      "choices": [
+        {
+          "text": "Identify interface defects between modules",
+          "correct": false
+        },
+        {
+          "text": "Assess if the system meets business needs and is ready for deployment",
+          "correct": true
+        },
+        {
+          "text": "Measure statement coverage",
+          "correct": false
+        },
+        {
+          "text": "Verify individual components in isolation",
+          "correct": false
+        }
+      ],
+      "explanation": "Acceptance testing verifies fitness for use against business needs and supports the release decision."
+    },
+    {
+      "text": "What is a key benefit of early testing?",
+      "choices": [
+        {
+          "text": "It eliminates the need for dynamic testing",
+          "correct": false
+        },
+        {
+          "text": "It guarantees on‑time delivery",
+          "correct": false
+        },
+        {
+          "text": "It helps prevent defects in requirements or design",
+          "correct": true
+        },
+        {
+          "text": "All early-found defects are easy to fix",
+          "correct": false
+        }
+      ],
+      "explanation": "Reviewing and analyzing requirements/design early helps prevent defects before coding, reducing rework and cost later."
+    },
+    {
+      "text": "Which item is NOT typically included in a test plan?",
+      "choices": [
+        {
+          "text": "Test design techniques to be used",
+          "correct": false
+        },
+        {
+          "text": "Detailed expected results for every test case",
+          "correct": true
+        },
+        {
+          "text": "Risks and contingencies",
+          "correct": false
+        },
+        {
+          "text": "Features to be tested",
+          "correct": false
+        }
+      ],
+      "explanation": "Expected results live in the test case specification, not in the high‑level test plan."
+    },
+    {
+      "text": "Which is a typical usability testing focus?",
+      "choices": [
+        {
+          "text": "Path coverage of decision logic",
+          "correct": false
+        },
+        {
+          "text": "Response time under peak load",
+          "correct": false
+        },
+        {
+          "text": "User interface clarity and ease of learning",
+          "correct": true
+        },
+        {
+          "text": "Data integrity constraints",
+          "correct": false
+        }
+      ],
+      "explanation": "Usability testing evaluates user experience attributes (learnability, efficiency, satisfaction)."
+    },
+    {
+      "text": "A typical use of a test management tool is to:",
+      "choices": [
+        {
+          "text": "Execute load tests",
+          "correct": false
+        },
+        {
+          "text": "Plan tests, manage cases and runs, and report status",
+          "correct": true
+        },
+        {
+          "text": "Auto‑generate source code",
+          "correct": false
+        },
+        {
+          "text": "Perform static analysis on code",
+          "correct": false
+        }
+      ],
+      "explanation": "Test management tools handle planning, case management, execution tracking, reporting, and traceability; other tasks use other tools."
+    },
+    {
+      "text": "Which of the following is a main purpose of testing?",
+      "choices": [
+        {
+          "text": "To ensure developers follow standards",
+          "correct": false
+        },
+        {
+          "text": "To eliminate all project risks",
+          "correct": false
+        },
+        {
+          "text": "To prove the software is perfect",
+          "correct": false
+        },
+        {
+          "text": "To find defects and provide information about quality risks",
+          "correct": true
+        }
+      ],
+      "explanation": "Testing discovers defects and provides information about product quality risks. It cannot prove perfection or remove all risks."
+    },
+    {
+      "text": "Which statement best defines a test condition?",
+      "choices": [
+        {
+          "text": "The environment where tests run",
+          "correct": false
+        },
+        {
+          "text": "The expected result of a test",
+          "correct": false
+        },
+        {
+          "text": "A detailed sequence of steps to execute",
+          "correct": false
+        },
+        {
+          "text": "A testable aspect of a system used as a basis for testing",
+          "correct": true
+        }
+      ],
+      "explanation": "A test condition is something that can be verified, such as a function, transaction, feature, or quality characteristic."
+    },
+    {
+      "text": "Which can be detected ONLY by dynamic testing?",
+      "choices": [
+        {
+          "text": "Violations of naming conventions",
+          "correct": false
+        },
+        {
+          "text": "Incorrect runtime calculation due to operator precedence",
+          "correct": true
+        },
+        {
+          "text": "Unused variable",
+          "correct": false
+        },
+        {
+          "text": "Unreachable code",
+          "correct": false
+        }
+      ],
+      "explanation": "Runtime miscalculations require execution to observe; the others are typical static analysis findings."
+    },
+    {
+      "text": "What is a test oracle?",
+      "choices": [
+        {
+          "text": "A person who approves releases",
+          "correct": false
+        },
+        {
+          "text": "A database from Oracle Corporation",
+          "correct": false
+        },
+        {
+          "text": "A mechanism to determine expected results for a test case",
+          "correct": true
+        },
+        {
+          "text": "A tool that generates test data automatically",
+          "correct": false
+        }
+      ],
+      "explanation": "A test oracle is any source that tells us the expected outcome (e.g., specs, previous version, business rules)."
+    },
+    {
+      "text": "Which activity is NOT part of the fundamental test process?",
+      "choices": [
+        {
+          "text": "Test monitoring and control",
+          "correct": false
+        },
+        {
+          "text": "Test analysis and design",
+          "correct": false
+        },
+        {
+          "text": "Debugging",
+          "correct": true
+        },
+        {
+          "text": "Test planning",
+          "correct": false
+        }
+      ],
+      "explanation": "Debugging is a development activity to locate and fix the cause of failures; it is not one of the fundamental testing activities."
+    },
+    {
+      "text": "Who should participate to make a review most effective?",
+      "choices": [
+        {
+          "text": "Testers, developers, business representatives, and other stakeholders",
+          "correct": true
+        },
+        {
+          "text": "Only the test manager",
+          "correct": false
+        },
+        {
+          "text": "Only testers",
+          "correct": false
+        },
+        {
+          "text": "Only the lead developer",
+          "correct": false
+        }
+      ],
+      "explanation": "Diverse perspectives (test, dev, business) increase defect detection and clarify understanding of requirements and design."
+    },
+    {
+      "text": "Which coverage metric requires that each decision outcome (True/False) be executed at least once?",
+      "choices": [
+        {
+          "text": "Statement coverage",
+          "correct": false
+        },
+        {
+          "text": "Condition coverage",
+          "correct": false
+        },
+        {
+          "text": "Decision (branch) coverage",
+          "correct": true
+        },
+        {
+          "text": "Multiple condition coverage",
+          "correct": false
+        }
+      ],
+      "explanation": "Decision/branch coverage ensures each branch outcome is exercised; statement ensures each statement executes at least once."
+    },
+    {
+      "text": "Given an input range 18–60 inclusive, which set provides BEST boundary tests?",
+      "choices": [
+        {
+          "text": "18, 60",
+          "correct": false
+        },
+        {
+          "text": "16, 18, 59, 61",
+          "correct": false
+        },
+        {
+          "text": "17, 18, 60, 61",
+          "correct": true
+        },
+        {
+          "text": "18, 19, 59, 60",
+          "correct": false
+        }
+      ],
+      "explanation": "Best practice includes just-below, on, and just-above boundaries: 17 (below), 18 (on), 60 (on), 61 (above)."
+    },
+    {
+      "text": "Which statement about exhaustive testing is TRUE?",
+      "choices": [
+        {
+          "text": "It guarantees that all defects are found in any system",
+          "correct": false
+        },
+        {
+          "text": "It is feasible only for very small, trivial programs",
+          "correct": true
+        },
+        {
+          "text": "It becomes possible when automation is used",
+          "correct": false
+        },
+        {
+          "text": "It is mandatory for safety‑critical systems",
+          "correct": false
+        }
+      ],
+      "explanation": "Due to combinatorial explosion, exhaustive testing is only realistic for trivial cases; automation cannot make it universally feasible."
+    },
+    {
+      "text": "Which is MOST appropriate to include in exit criteria?",
+      "choices": [
+        {
+          "text": "100% branch coverage always",
+          "correct": false
+        },
+        {
+          "text": "All developers finished coding",
+          "correct": false
+        },
+        {
+          "text": "All critical defects fixed and verified",
+          "correct": true
+        },
+        {
+          "text": "All tests automated",
+          "correct": false
+        }
+      ],
+      "explanation": "Exit criteria commonly include thresholds on defect status and retest; demanding 100% branch coverage is often impractical."
+    },
+    {
+      "text": "Which of the following best describes a failure?",
+      "choices": [
+        {
+          "text": "A gap in the test plan",
+          "correct": false
+        },
+        {
+          "text": "A flaw in code that may cause incorrect behavior",
+          "correct": false
+        },
+        {
+          "text": "A human action that produces an incorrect result",
+          "correct": false
+        },
+        {
+          "text": "An observable deviation from expected behavior during execution",
+          "correct": true
+        }
+      ],
+      "explanation": "A failure is an observed incorrect behavior when the software is executed. A human action is an error; a flaw in code is a defect."
+    },
+    {
+      "text": "Which option best defines a defect?",
+      "choices": [
+        {
+          "text": "A human action that produces an incorrect result",
+          "correct": false
+        },
+        {
+          "text": "A risk that testing aims to reduce",
+          "correct": false
+        },
+        {
+          "text": "A flaw that may cause a failure if executed",
+          "correct": true
+        },
+        {
+          "text": "An observable deviation during execution",
+          "correct": false
+        }
+      ],
+      "explanation": "An error (human mistake) can introduce a defect (flaw) which, when executed, can cause a failure (observable incorrect behavior)."
+    },
+    {
+      "text": "Which activity belongs to test implementation?",
+      "choices": [
+        {
+          "text": "Preparing test data and test environment",
+          "correct": true
+        },
+        {
+          "text": "Deriving test conditions",
+          "correct": false
+        },
+        {
+          "text": "Monitoring test progress",
+          "correct": false
+        },
+        {
+          "text": "Approving test strategy",
+          "correct": false
+        }
+      ],
+      "explanation": "Implementation includes preparing procedures, data, and environment to enable execution."
+    },
+    {
+      "text": "Which review type is the most formal, with defined roles and entry/exit criteria?",
+      "choices": [
+        {
+          "text": "Inspection",
+          "correct": true
+        },
+        {
+          "text": "Walkthrough",
+          "correct": false
+        },
+        {
+          "text": "Pair review",
+          "correct": false
+        },
+        {
+          "text": "Technical review",
+          "correct": false
+        }
+      ],
+      "explanation": "Inspections are the most formal review type with roles (moderator, author, reader, recorder) and defined process checkpoints."
+    },
+    {
+      "text": "Which metric BEST indicates product quality trend during test execution?",
+      "choices": [
+        {
+          "text": "Number of builds deployed",
+          "correct": false
+        },
+        {
+          "text": "Defect discovery and closure rates over time",
+          "correct": true
+        },
+        {
+          "text": "Number of test cases designed",
+          "correct": false
+        },
+        {
+          "text": "Lines of code written",
+          "correct": false
+        }
+      ],
+      "explanation": "Trends in defect discovery/closure inform quality and readiness decisions better than raw counts of cases or LOC."
+    },
+    {
+      "text": "Which is an example output from a static analysis tool?",
+      "choices": [
+        {
+          "text": "User acceptance feedback",
+          "correct": false
+        },
+        {
+          "text": "Incorrect runtime calculation",
+          "correct": false
+        },
+        {
+          "text": "Throughput under stress",
+          "correct": false
+        },
+        {
+          "text": "Unreachable code and unused variables",
+          "correct": true
+        }
+      ],
+      "explanation": "Static analysis flags code issues like unreachable code, unused variables, rule violations—without running the program."
+    },
+    {
+      "text": "Which test level focuses on interactions between components?",
+      "choices": [
+        {
+          "text": "Integration testing",
+          "correct": true
+        },
+        {
+          "text": "Acceptance testing",
+          "correct": false
+        },
+        {
+          "text": "Component testing",
+          "correct": false
+        },
+        {
+          "text": "System testing",
+          "correct": false
+        }
+      ],
+      "explanation": "Integration testing targets interfaces and interactions among integrated components or systems."
+    },
+    {
+      "text": "Which statement best defines static testing?",
+      "choices": [
+        {
+          "text": "Testing without executing the software",
+          "correct": true
+        },
+        {
+          "text": "Testing only via automated scripts",
+          "correct": false
+        },
+        {
+          "text": "Testing the system under load",
+          "correct": false
+        },
+        {
+          "text": "Testing after deployment only",
+          "correct": false
+        }
+      ],
+      "explanation": "Static testing comprises reviews and static analysis of artifacts without executing the code."
+    },
+    {
+      "text": "Alpha testing is best described as:",
+      "choices": [
+        {
+          "text": "Unit testing by developers",
+          "correct": false
+        },
+        {
+          "text": "Testing by end users in their own environment before release",
+          "correct": false
+        },
+        {
+          "text": "User or tester exercises in the developer’s environment before public release",
+          "correct": true
+        },
+        {
+          "text": "Operational testing in production",
+          "correct": false
+        }
+      ],
+      "explanation": "Alpha occurs in the developer’s environment with internal users/testers; beta occurs with external users in their environments."
+    }
+  ]
+}
