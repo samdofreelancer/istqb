@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./quiz-backend
+    container_name: quiz-backend
+    ports:
+      - "8081:8081"
+    networks:
+      - quiz-app-network
+
+  frontend:
+    build:
+      context: ./quiz-frontend
+    container_name: quiz-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - quiz-app-network
+
+networks:
+  quiz-app-network:
+    driver: bridge
