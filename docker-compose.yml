@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   backend:
-    image: ghcr.io/${GITHUB_REPOSITORY:-samdofreelancer/istqb}-backend:${TAG:-latest}
     build:
       context: ./quiz-backend
       dockerfile: Dockerfile
@@ -20,7 +19,6 @@ services:
       - quiz-app-network
 
   frontend:
-    image: ghcr.io/${GITHUB_REPOSITORY:-samdofreelancer/istqb}-frontend:${TAG:-latest}
     build:
       context: ./quiz-frontend
       dockerfile: Dockerfile
