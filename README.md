@@ -117,6 +117,22 @@ Choose one of the following options:
 
 ### Using Docker Compose (Recommended)
 
+You can either use pre-built images from GitHub Container Registry or build the images locally.
+
+#### Option 1: Using Pre-built Images
+
+1. Pull and run the pre-built images:
+    ```powershell
+    # Login to GitHub Container Registry (needed only once)
+    docker login ghcr.io -u USERNAME
+    
+    # Start the services
+    docker compose pull
+    docker compose up -d
+    ```
+
+#### Option 2: Building Locally
+
 1. Clone the repository and navigate to the project root:
     ```powershell
     git clone https://github.com/samdofreelancer/istqb.git

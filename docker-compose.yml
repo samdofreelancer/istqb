@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   backend:
+    image: ghcr.io/${GITHUB_REPOSITORY:-samdofreelancer/istqb}-backend:${TAG:-latest}
     build:
       context: ./quiz-backend
       dockerfile: Dockerfile
@@ -9,10 +10,17 @@ services:
     ports:
       - "8081:8081"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - quiz-app-network
 
   frontend:
+    image: ghcr.io/${GITHUB_REPOSITORY:-samdofreelancer/istqb}-frontend:${TAG:-latest}
     build:
       context: ./quiz-frontend
       dockerfile: Dockerfile
@@ -20,7 +28,8 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     restart: unless-stopped
     networks:
       - quiz-app-network
