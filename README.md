@@ -30,6 +30,20 @@ This is a full-stack web application designed to help users practice for ISTQB c
 *   **H2 Database:** An in-memory, relational database management system written in Java.
 *   **Lombok:** A Java library that automatically plugs into your editor and build tools to automate boilerplate code.
 
+### Docker Infrastructure
+
+*   **Docker Compose:** Orchestrates the multi-container application
+*   **Frontend Container:**
+    * Based on `nginx:stable-alpine`
+    * Serves the Vue.js SPA
+    * Proxies API requests to backend
+    * Exposed on port 80
+*   **Backend Container:**
+    * Based on Eclipse Temurin JRE 17
+    * Runs the Spring Boot application
+    * Exposed on port 8081
+    * Contains embedded H2 database
+
 ## Project Structure
 
 ```
@@ -92,10 +106,61 @@ The frontend configuration is located in `quiz-frontend/vite.config.js`. The fro
 
 ### Prerequisites
 
-*   Node.js and npm (for the frontend)
-*   Java 17 and Maven (for the backend)
+Choose one of the following options:
 
-### Backend Setup
+#### Option 1: Docker (Recommended)
+* Docker and Docker Compose
+
+#### Option 2: Local Development
+* Node.js and npm (for the frontend)
+* Java 17 and Maven (for the backend)
+
+### Using Docker Compose (Recommended)
+
+1. Clone the repository and navigate to the project root:
+    ```powershell
+    git clone https://github.com/samdofreelancer/istqb.git
+    cd istqb
+    ```
+
+2. Build and start both services using Docker Compose:
+    ```powershell
+    docker compose up --build
+    ```
+    This will:
+    - Build the backend Spring Boot application
+    - Build the frontend Vue.js application
+    - Start both services
+    - The frontend will be available at `http://localhost:80`
+    - The backend API will be available at `http://localhost:8081`
+
+3. To run in detached mode (background):
+    ```powershell
+    docker compose up -d
+    ```
+
+4. View logs for both services:
+    ```powershell
+    # All services
+    docker compose logs -f
+
+    # Just backend
+    docker compose logs -f backend
+
+    # Just frontend
+    docker compose logs -f frontend
+    ```
+
+5. Stop the services:
+    ```powershell
+    docker compose down
+    ```
+
+### Local Development Setup
+
+If you prefer to run the services directly on your machine:
+
+#### Backend Setup
 
 1.  Navigate to the `quiz-backend` directory:
     ```bash
@@ -107,7 +172,7 @@ The frontend configuration is located in `quiz-frontend/vite.config.js`. The fro
     ```
 The backend will be running on `http://localhost:8081`.
 
-### Frontend Setup
+#### Frontend Setup
 
 1.  Navigate to the `quiz-frontend` directory:
     ```bash
