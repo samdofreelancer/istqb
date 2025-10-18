@@ -2,3 +2,6 @@ target/
 .git/
 .idea/
 .settings/
+.vscode/
+logs/
+*.log

@@ -4,20 +4,24 @@ services:
   backend:
     build:
       context: ./quiz-backend
+      dockerfile: Dockerfile
     container_name: quiz-backend
     ports:
       - "8081:8081"
+    restart: unless-stopped
     networks:
       - quiz-app-network
 
   frontend:
     build:
       context: ./quiz-frontend
+      dockerfile: Dockerfile
     container_name: quiz-frontend
     ports:
       - "80:80"
     depends_on:
       - backend
+    restart: unless-stopped
     networks:
       - quiz-app-network
 
