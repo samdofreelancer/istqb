@@ -11,10 +11,10 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      interval: 2s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     networks:
       - quiz-app-network
 
@@ -23,6 +23,7 @@ services:
       context: ./quiz-frontend
       dockerfile: Dockerfile
     container_name: quiz-frontend
+    hostname: istqb-demo.127.0.0.1.nip.io
     ports:
       - "80:80"
     depends_on:
